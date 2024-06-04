@@ -1,9 +1,11 @@
 from django.shortcuts import render
 
 from django.contrib.auth import authenticate, login, logout
-from rest_framework import status
+from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from auth_user import serializers
 
 # Create your views here.
 class LoginView(APIView):
@@ -21,6 +23,7 @@ class LoginView(APIView):
 
         # Si no es correcto devolvemos un error en la petición
         return Response(
+            serializers.CustomerSerializer(user).data,
             status=status.HTTP_404_NOT_FOUND)
 
 class LogoutView(APIView):
@@ -29,4 +32,6 @@ class LogoutView(APIView):
         logout(request)
 
         # Devolvemos la respuesta al cliente
-        return Response(status=status.HTTP_200_OK)        
+        return Response(status=status.HTTP_200_OK)   
+class SignupView(generics.CreateAPIView):
+    serializer_class = serializers.UserSerializer         
