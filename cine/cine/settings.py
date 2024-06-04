@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'cine.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cncdb',
+        'USER': 'Pacopepe',
+        'PASSWORD':'123admin',
+        'HOST':'localhost',
+        'PORT': '5432'
     }
 }
 
