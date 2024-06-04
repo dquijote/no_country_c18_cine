@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from auth_user import views
-
+from .views import LoginView, LogoutView
 router = routers.DefaultRouter()
 # router.register(r'client', views.CustumerViewSet)
 
@@ -28,4 +28,8 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    path('login/', LoginView.as_view(), name='auth_login'),
+
+    path('logout/', LogoutView.as_view(), name='auth_logout'),
 ]

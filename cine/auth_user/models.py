@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 
 # Create your models here.
 
@@ -8,7 +8,11 @@ genderOption = [
          ('Masculino', 'Masculino'),
 
     ]
-class Customer(User):  
+
+
+class Customer(AbstractUser):  
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'password']
     class Meta:
         verbose_name = "Cliente"
         verbose_name_plural = "Clientes"
@@ -23,6 +27,7 @@ class Customer(User):
         return 'img/customer/' + str(filename)
   
     # personal_id = models.IntegerField("Identificador", unique=True)
+    email = models.EmailField(max_length=150, unique=True)
     last_name2 = models.CharField("Segundo Apellido ", max_length=255, null=True)
     picture = models.ImageField("Foto", blank=True, default=None, upload_to=custom_upload_to)
     gender = models.CharField("Genero", choices=genderOption, max_length=150)
