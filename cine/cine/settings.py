@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
     # Local app
     'auth_user',
-    'movies'
+    'movies',
 ]
 
 MIDDLEWARE = [
@@ -84,13 +84,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'cncdb',
-        'USER': 'Pacopepe',
+        'USER': 'pacopepe',
         'PASSWORD':'123admin',
         'HOST':'localhost',
         'PORT': '5432'
     }
 }
 
+# Authentication option
+AUTH_USER_MODEL = "auth_user.Customer"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
