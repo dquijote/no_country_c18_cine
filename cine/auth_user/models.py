@@ -20,8 +20,8 @@ class Customer(AbstractUser):
     def custom_upload_to(instance, filename):
         try:
             ext = instance.picture.name[-4:]
-            filename = str(instance.username) + "_" + str(instance.personal_id) + str(ext)
-            instance.picture.name = instance.personal_id
+            filename = str(instance.username) + "_" + str(instance.first_name) + str(ext)
+            instance.picture.name = instance.first_name
         except Customer.DoesNotExist:
             pass
         return 'img/customer/' + str(filename)

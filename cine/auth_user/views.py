@@ -32,6 +32,6 @@ class LogoutView(APIView):
         logout(request)
 
         # Devolvemos la respuesta al cliente
-        return Response(status=status.HTTP_200_OK)   
+        return Response(status=status.HTTP_201_CREATED)   
 class SignupView(generics.CreateAPIView):
-    serializer_class = serializers.UserSerializer         
+    serializer_class = serializers.CustomerSerializer         
