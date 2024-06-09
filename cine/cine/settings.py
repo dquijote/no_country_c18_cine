@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Local app
     'auth_user',
     'movies',
+    'cart'
 ]
 
 MIDDLEWARE = [
